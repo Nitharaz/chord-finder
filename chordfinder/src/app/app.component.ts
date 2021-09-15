@@ -9,17 +9,21 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class AppComponent implements OnInit {
   public title: string = 'chordfinder';
   public notes = ['c','c#','d','d#','e','f','f#','g','g#','a','a#','b']
+
   public tuningC6 = ['e', 'c', 'a', 'g', 'e', 'c'];
+  public tuningE9 = ['f#', 'd#', '#', 'e', 'b', 'g#', 'f#', 'e', 'd', 'b'];
+
   public ruleOf18: number = 17.817;
   public scaleLength: number = 1200; 
   public fretNumber: number = 30;
 
   public ngOnInit():void {
-    this.addFretboard();
+    this.addFretboard(this.tuningC6);
   }
 
-  public addFretboard() {
-    for(let note in this.tuningC6) {
+  public addFretboard(tuning:any) {
+    if(tuning) {
+      for(let note in tuning) {
       var fretBoardRow = document.createElement('div');
       fretBoardRow.classList.add('fretboardrow');
       document.getElementById('fretboard')?.appendChild(fretBoardRow);
@@ -29,7 +33,7 @@ export class AppComponent implements OnInit {
 
       for(let i = 0; i < this.fretNumber; i++) {
           var divFret = document.createElement('div');
-          let notePosition = this.notes.map(function(e) {return e;}).indexOf(this.tuningC6[note]);
+          let notePosition = this.notes.map(function(e) {return e;}).indexOf(tuning[note]);
           var noteNumber = i + notePosition;
 
           if(i >= this.notes.length - notePosition) {
@@ -38,7 +42,6 @@ export class AppComponent implements OnInit {
 
           fretLength = ((this.scaleLength - scaleLengthFretDifference) / this.ruleOf18);
           scaleLengthFretDifference += ((this.scaleLength - scaleLengthFretDifference) / this.ruleOf18);
-          console.log(fretLength);
 
           divFret.innerHTML = this.notes[noteNumber];
           divFret.classList.add('fret');
@@ -48,4 +51,5 @@ export class AppComponent implements OnInit {
       }
     }
   }
+    }
 }

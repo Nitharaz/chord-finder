@@ -1,6 +1,16 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+.container {
+    padding:20px;
+    background-color: rgb(146, 146, 146);
+    width: 100%;
+    text-align: center;
+}
+
 #fretboard {
     background-color: silver;
     width:fit-content;
+     display: inline-block;  
 }
 
 .fretboardrow {
@@ -9,9 +19,14 @@
 
 .fret {
     background-color: rgb(223, 137, 25);
-    width:40px;
-    height:20px;
     margin: 1px;
     display: flex;
     justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content:space-evenly;
+    background-color: rgb(60, 60, 60);
+    width: 100%;
 }
