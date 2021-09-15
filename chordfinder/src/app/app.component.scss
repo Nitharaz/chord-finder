@@ -1,0 +1,17 @@
+#fretboard {
+    background-color: silver;
+    width:fit-content;
+}
+
+.fretboardrow {
+    display: flex;
+}
+
+.fret {
+    background-color: rgb(223, 137, 25);
+    width:40px;
+    height:20px;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+}
